@@ -1,1 +1,43 @@
-<h1>RYAN O'DONNELL - AMERICAN</h1>
+<div class="container-fixed">
+  <nav class="navbar navbar-default" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Ryan O'Donnell</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="mailto:ryan.jp.odonnell@gmail.com?Subject=Hello">Email</a></li>
+        <li><a href="https://github.com/ryanjpodonnell">Github</a></li>
+        <li><a href="https://www.linkedin.com/profile/view?id=331108150">LinkedIn</a></li>
+        <li><a href="https://docs.google.com/document/d/153_jeMqBe_qJrht9QRUNM4SLcuqQfricMnCQcUNu654/edit?usp=sharing">Resume</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </nav>
+
+  <div class="row">
+    <div class="col-xs-7 col-xs-offset-1">
+      <h1>Hi, I'm Ryan.</h1>
+      <h2>And I'm a RoR / Javascript developer.</h2>
+      <hr>
+      <img src="/assets/profile.png">
+    </div>
+    <div class="col-xs-4">
+      <h3>Projects</h3>
+      <a href="https://ryanjpodonnell.github.io/"><img src="/assets/snake.png" id="snake"></a>
+      <a href="http://hiphopgenius.herokuapp.com/"><img src="/assets/hiphop.png"></a>
+    </div>    
+  </div>  
+</div>
+
+<script type="text/javascript">
+skrollr.init({
+	forceHeight: false,
+	easing: {
+		vibrate: function(p) {
+			return Math.sin(p * 10 * Math.PI);
+		}
+	}
+});
+</script>
