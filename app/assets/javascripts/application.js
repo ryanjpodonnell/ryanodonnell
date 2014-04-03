@@ -15,9 +15,17 @@
 //= require turbolinks
 //= require skrollr
 //= require bootstrap
-//= require_tree .
-//= require keymaster.js
-//= require snake.js
-//= require text.js
-//= require game.js
 
+//= require keymaster.js
+
+//= require snake_snake.js
+//= require snake_text.js
+//= require snake_game.js
+
+//= require asteroid_moving_object.js
+//= require asteroid_asteroid.js
+//= require asteroid_game.js
+//= require asteroid_ship.js
+//= require asteroid_bullet.js
+
+//= require_tree .

@@ -5,6 +5,6 @@ class StaticPagesController < ApplicationController
   def snake
   end
 
-  def about
+  def asteroids
   end
 end

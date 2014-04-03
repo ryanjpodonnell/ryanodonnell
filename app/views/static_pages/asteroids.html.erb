@@ -1,9 +1,9 @@
 <div class="container-fixed">
   <%= render 'static_pages/header' %>
-  <center><canvas width="600" height="400"></canvas></center>
+  <center><canvas width="500" height="500"></canvas></center>
   <script>
       var canvas = document.getElementsByTagName("canvas")[0];
-      var newGame = new this.Snake.Game(canvas);
+      var newGame = new this.Asteroids.Game(canvas);
       newGame.start();
   </script>
 </div>
