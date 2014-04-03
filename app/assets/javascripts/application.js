@@ -16,3 +16,8 @@
 //= require skrollr
 //= require bootstrap
 //= require_tree .
+//= require keymaster.js
+//= require snake.js
+//= require text.js
+//= require game.js
+

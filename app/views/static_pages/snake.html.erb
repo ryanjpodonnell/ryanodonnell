@@ -1,0 +1,38 @@
+<div class="container-fixed">
+  <nav class="navbar navbar-default" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Ryan O'Donnell</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="mailto:ryan.jp.odonnell@gmail.com?Subject=Hello">Email</a></li>
+        <li><a href="https://github.com/ryanjpodonnell">Github</a></li>
+        <li><a href="https://www.linkedin.com/profile/in/ryanjpodonnell">LinkedIn</a></li>
+        <li><a href="https://drive.google.com/file/d/0B8jxVrVJ1QOMWk5sblhwRUF6d2M/edit?usp=sharing">Resume</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </nav>
+  
+  
+  <center><canvas width="600" height="400"></canvas></center>
+	<script src="inherits.js"></script>
+  <script src="keymaster.js"></script>
+	<script src="snake.js"></script>
+  <script src="text.js"></script>
+	<script src="game.js"></script>
+  <script>
+      var canvas = document.getElementsByTagName("canvas")[0];
+      var newGame = new this.Snake.Game(canvas);
+      newGame.start();
+  </script>
+    
+</div>
