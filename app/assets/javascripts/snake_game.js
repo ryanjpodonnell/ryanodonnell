@@ -31,6 +31,7 @@
 	};
 
 	Game.prototype.draw = function() {
+    var colors = ["yellow", "blue", "green", "purple", "black", "orange"];
 		var scaleX = Game.DIM_X/Game.TILE_X;
 		var scaleY = Game.DIM_Y/Game.TILE_Y;
     
@@ -50,7 +51,7 @@
 		}
 
 		for (var i = 0; i < this.snake.segments.length; i++) {
-			this.ctx.fillStyle = "blue";
+			this.ctx.fillStyle = colors[ i % colors.length ];
 			this.ctx.fillRect(this.snake.segments[i][0]*scaleX, 
                         this.snake.segments[i][1]*scaleY,
 												scaleX, scaleY);
@@ -106,12 +107,13 @@
     this.turnNo++;
 		if (this.turnNo % this.appleFreq === 0 && this.appleX === -1) {
 			while(!createApple(this)) {
-				createApple(this)
+				createApple(this);
 			}
 		}
   };
 
 	var createApple = function(game) {
+    $("body").removeClass("red-container")
 		var generatedApple = true;
  		game.appleX = 1 + Math.floor(Math.random() * (Game.TILE_X - 2));
  		game.appleY = 1 + Math.floor(Math.random() * (Game.TILE_Y - 2));
@@ -137,7 +139,8 @@
 	};
 
 	Game.prototype.endGame = function() {
-		alert("you lost. score " + this.applesCollected);
+    $("body").removeClass("red-container")
+    $("#leaderboards").append('<li>' + this.applesCollected + '</li>');
     clearInterval(this.interval);
 		this.ctx = canvas.getContext("2d");
 		this.snake = new Snake.Snake(Game.TILE_X, Game.TILE_Y);
@@ -160,6 +163,7 @@
   
   Game.prototype.maybeLevelUp = function() {
 		if (this.applesCollected === this.nextlevel) {
+      $("body").addClass("red-container")
       var that = this;
 			this.nextlevel = this.nextlevel * 2;
 			this.speed = this.speed * .75;
