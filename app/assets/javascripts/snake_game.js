@@ -71,11 +71,11 @@
     this.setDirection();
 		this.checkApple();
 		this.snake.move(this);
-		this.checkGameOver();
 		this.maybeLevelUp();
     this.text.update("Snake Score " + this.applesCollected);
     this.displayContratulatoryMessage();
 		this.draw();
+    this.checkGameOver();
 	};
 
 	Game.prototype.bindKeyHandlers = function(){
@@ -113,7 +113,7 @@
   };
 
 	var createApple = function(game) {
-    $("body").removeClass("red-container")
+    $("body").removeClass("hulk-container")
 		var generatedApple = true;
  		game.appleX = 1 + Math.floor(Math.random() * (Game.TILE_X - 2));
  		game.appleY = 1 + Math.floor(Math.random() * (Game.TILE_Y - 2));
@@ -132,15 +132,27 @@
 			if(snakeArr[snakeArr.length-1][0] === snakeArr[i][0] &&
 			   snakeArr[snakeArr.length-1][1] === snakeArr[i][1] && 
          snakeArr.length > 1) {
-			  this.endGame();
+			  this.getInitials();
 				break;
 			}
 		}
 	};
 
-	Game.prototype.endGame = function() {
-    $("body").removeClass("red-container")
-    $("#leaderboards").append('<li>' + this.applesCollected + '</li>');
+  Game.prototype.getInitials = function() {
+    $("body").removeClass("hulk-container")
+		this.ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
+    this.ctx.beginPath();
+    this.ctx.lineWidth="10";
+    this.ctx.strokeStyle="red";
+    this.ctx.rect(0,0,Game.DIM_X,Game.DIM_Y); 
+    this.ctx.stroke();
+    
+    clearInterval(this.interval);
+    
+    $(".form-inline").removeClass("hidden");
+  };
+
+	Game.prototype.endGame = function() {  
     clearInterval(this.interval);
 		this.ctx = canvas.getContext("2d");
 		this.snake = new Snake.Snake(Game.TILE_X, Game.TILE_Y);
@@ -163,7 +175,7 @@
   
   Game.prototype.maybeLevelUp = function() {
 		if (this.applesCollected === this.nextlevel) {
-      $("body").addClass("red-container")
+      $("body").addClass("hulk-container")
       var that = this;
 			this.nextlevel = this.nextlevel * 2;
 			this.speed = this.speed * .75;
@@ -184,5 +196,22 @@
       this.cText.updateTextColor();
       this.congratulatoryMessageDuration++;
     }
+  };
+  
+  Game.prototype.submitScoreAndRestart = function() {
+    var that = this;
+    var score = this.applesCollected;
+    var initials = $("#inputInitials").val() || "AAA";
+    
+    $.ajax({
+      url: "/snake_scores",
+      type: "POST",
+      data: {initials: initials, score: score},
+      success: function () {
+        $(".form-inline").addClass("hidden");
+        $("#leaderboards").append('<li>' + score + ' - ' + initials + '</li>');
+        that.endGame();
+      }
+    });
   };
 })(this);

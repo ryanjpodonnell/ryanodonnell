@@ -7,13 +7,52 @@
     </div>
     <div class="col-xs-8">
       <canvas width="600" height="400"></canvas>
+      
+      <form class="form-inline hidden" role="form">
+        <div class="form-group">
+          <label for="inputInitials">Enter Your Initials</label>
+          <input type="text" class="form-control" id="inputInitials" placeholder="Enter initials" maxlength="3">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      
     </div>
   </div>
 </div>
 
 
 <script>
-    var canvas = document.getElementsByTagName("canvas")[0];
-    var newGame = new this.Snake.Game(canvas);
-    newGame.start();
+  $.ajax({
+    url: "/snake_scores",
+    type: "GET",
+    success: function (scores) {
+      
+      function predicatBy(prop){
+         return function(a,b){
+            if( a[prop] < b[prop]){
+                return 1;
+            }else if( a[prop] > b[prop] ){
+                return -1;
+            }
+            return 0;
+         }
+      }
+      
+      scores.sort( predicatBy("score") );
+      for (var i = 0; i < scores.length; i++) {
+        $("#leaderboards").append('<li>' + scores[i].score + " - " + scores[i].initials + '</li>');
+      }
+    }
+  });
+  
+  this.addEventListener("submit", submitForm, false);
+  
+  var canvas = document.getElementsByTagName("canvas")[0];
+  var newGame = new this.Snake.Game(canvas);
+  newGame.start();
+  
+  function submitForm(e) {
+    e.preventDefault();
+    newGame.submitScoreAndRestart();
+  };
 </script>

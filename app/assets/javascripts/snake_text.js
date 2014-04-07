@@ -35,7 +35,7 @@
     if (this.y < 0) {
       this.y = 450;
     }
-    this.text.y -= 1;
+    this.y -= 1;
   };
   
   Text.prototype.update = function (text) {
