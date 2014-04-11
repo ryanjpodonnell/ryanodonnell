@@ -106,6 +106,7 @@
   
   var drawInitialGrid = function() {
     newGame.ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
+
     for (var i = 0; i < Game.ROWS; i++) {
       for (var j = 0; j < Game.COLS; j++) {
         newGame.ctx.rect(i * Game.CELL_WIDTH, j * Game.CELL_HEIGHT, 
