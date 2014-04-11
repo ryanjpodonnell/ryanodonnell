@@ -28,4 +28,6 @@
 //= require asteroid_ship.js
 //= require asteroid_bullet.js
 
+//= require life_game.js
+
 //= require_tree .

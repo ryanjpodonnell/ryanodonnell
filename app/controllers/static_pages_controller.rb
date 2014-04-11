@@ -7,4 +7,7 @@ class StaticPagesController < ApplicationController
 
   def asteroids
   end
+  
+  def life
+  end
 end

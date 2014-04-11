@@ -29,6 +29,10 @@
 		this.bindKeyHandlers();
 		this.interval = window.setInterval(function() {that.step()},that.speed);
 	};
+  
+  Game.prototype.stop = function() {
+    clearInterval(this.interval);
+  };
 
 	Game.prototype.draw = function() {
     var colors = ["yellow", "blue", "green", "purple", "black", "orange"];
