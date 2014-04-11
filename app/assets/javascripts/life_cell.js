@@ -8,9 +8,4 @@
     this.altered = false;
 	};
   
-  Cell.prototype.activateCell = function() {
-    this.alive = !this.alive;
-    this.altered = true;
-  };
-  
 })(this);

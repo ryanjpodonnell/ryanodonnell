@@ -7,6 +7,8 @@
     canvas.addEventListener('mousemove', mouseMove);
     
     this.cellArray = [];
+    this.cellColors = ['#E0E0E0','#C0C0C0','#A0A0A0','#808080','#606060',
+                       '#404040','#202020','#000000'];
     this.ctx = canvas.getContext("2d");
     this.interval = undefined;
   };
@@ -37,9 +39,7 @@
       }
     }
     if (anyAltered === false) {
-      clearInterval(this.interval);
-      this.interval = undefined;
-      $('.btn').text("Start");
+      endGame();
     }
   };
 
@@ -47,15 +47,17 @@
     for (var i = 0; i < Game.ROWS; i++) {
       for (var j = 0; j < Game.COLS; j++) {
         if (this.cellArray[i][j].altered === true) {
-          this.cellArray[i][j].alive = !this.cellArray[i][j].alive
-          if (this.cellArray[i][j].alive === true) { 
-      			this.ctx.fillRect(j * Game.CELL_HEIGHT, i * Game.CELL_WIDTH,
-      												Game.CELL_HEIGHT,     Game.CELL_WIDTH);
-          } else {
-            this.ctx.clearRect(j * Game.CELL_HEIGHT + 1, i * Game.CELL_WIDTH + 1,
-      												 Game.CELL_HEIGHT - 2,     Game.CELL_WIDTH - 2);
-          }
+          this.cellArray[i][j].alive = !this.cellArray[i][j].alive;
           this.cellArray[i][j].altered = false;
+        }
+        if (this.cellArray[i][j].alive === true) {
+          var cellNeighbors = countNeighbors(i, j);
+          this.ctx.fillStyle = this.cellColors[cellNeighbors];
+    			this.ctx.fillRect(j * Game.CELL_HEIGHT + 1, i * Game.CELL_WIDTH + 1,
+    												Game.CELL_HEIGHT - 2,     Game.CELL_WIDTH - 2);
+        } else {
+          this.ctx.clearRect(j * Game.CELL_HEIGHT + 1, i * Game.CELL_WIDTH + 1,
+    												 Game.CELL_HEIGHT - 2,     Game.CELL_WIDTH - 2);
         }
       }
     }
@@ -67,9 +69,7 @@
       this.interval = window.setInterval(function() {that.step()}, 1000/Game.FPS);
       $('.btn').text("Stop");
     } else {
-      clearInterval(this.interval);
-      this.interval = undefined;
-      $('.btn').text("Start");
+      endGame();
     }
   };
 
@@ -114,6 +114,12 @@
     }
     newGame.ctx.stroke();
   };
+  
+  var endGame = function() {
+    clearInterval(newGame.interval);
+    newGame.interval = undefined;
+    $('.btn').text("Start");
+  }
   
   var initializeCellArray = function() {
     for (var i = 0; i < Game.ROWS; i++) {
