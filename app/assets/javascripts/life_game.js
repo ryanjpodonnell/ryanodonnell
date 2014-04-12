@@ -50,6 +50,11 @@
           this.cellArray[i][j].alive = !this.cellArray[i][j].alive;
           this.cellArray[i][j].altered = false;
         }
+      }
+    }
+    
+    for (var i = 0; i < Game.ROWS; i++) {
+      for (var j = 0; j < Game.COLS; j++) {
         if (this.cellArray[i][j].alive === true) {
           var cellNeighbors = countNeighbors(i, j);
           this.ctx.fillStyle = this.cellColors[cellNeighbors];
