@@ -7,7 +7,7 @@
     canvas.addEventListener('mousemove', mouseMove);
     
     this.cellArray = [];
-    this.cellColors = ['#E0E0E0','#C0C0C0','#A0A0A0','#808080','#606060',
+    this.cellColors = ['red','#E0E0E0','#C0C0C0','#A0A0A0','#808080','#606060',
                        '#404040','#202020','#000000'];
     this.ctx = canvas.getContext("2d");
     this.interval = undefined;
@@ -52,7 +52,6 @@
         }
       }
     }
-    
     for (var i = 0; i < Game.ROWS; i++) {
       for (var j = 0; j < Game.COLS; j++) {
         if (this.cellArray[i][j].alive === true) {
