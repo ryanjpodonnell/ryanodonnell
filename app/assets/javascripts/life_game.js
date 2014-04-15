@@ -7,8 +7,8 @@
     canvas.addEventListener('mousemove', mouseMove);
     
     this.cellArray = [];
-    this.cellColors = ['red','#E0E0E0','#C0C0C0','#A0A0A0','#808080','#606060',
-                       '#404040','#202020','#000000'];
+    this.cellColors = ['#ff0000','#e50000','#C0C0C0','#A0A0A0','#cc0000',
+                       '#b20000','#990000','#7f0000','#660000'];
     this.ctx = canvas.getContext("2d");
     this.interval = undefined;
   };
