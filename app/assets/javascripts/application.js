@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require skrollr
 //= require bootstrap
 
 //= require keymaster.js
