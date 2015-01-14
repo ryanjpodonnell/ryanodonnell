@@ -1,3 +1,9 @@
+PATH
+  remote: braintree-ruby
+  specs:
+    braintree (2.38.0)
+      builder (>= 2.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -27,8 +33,6 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.2)
     atomic (1.1.16)
-    braintree (2.38.0)
-      builder (>= 2.0.0)
     builder (3.1.4)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -115,7 +119,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  braintree
+  braintree!
   coffee-rails (~> 4.0.0)
   figaro
   font-awesome-sass

@@ -10,7 +10,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'font-awesome-sass'
 gem 'figaro'
-gem 'braintree'
+gem 'braintree', :path => "braintree-ruby"
 
 group :doc do
   gem 'sdoc', require: false
