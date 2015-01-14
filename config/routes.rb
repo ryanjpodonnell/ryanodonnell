@@ -8,5 +8,5 @@ Ryanodonnell::Application.routes.draw do
   resources :snake_scores, :only => [:create, :index]
   
   match 'webhooks/process' => 'webhooks#verify', :via => :get
-  resources :webhooks, :only => [:create]
+  match 'webhooks/process' => 'webhooks#create', :via => :post
 end
