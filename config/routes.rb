@@ -6,4 +6,7 @@ Ryanodonnell::Application.routes.draw do
   get "/life", to: "static_pages#life"
   
   resources :snake_scores, :only => [:create, :index]
+  
+  match 'webhooks/process' => 'webhooks#verify', :via => :get
+  resources :webhooks, :only => [:create]
 end

@@ -9,6 +9,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'font-awesome-sass'
+gem 'figaro'
+gem 'braintree'
 
 group :doc do
   gem 'sdoc', require: false
