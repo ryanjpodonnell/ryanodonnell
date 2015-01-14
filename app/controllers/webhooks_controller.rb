@@ -1,4 +1,6 @@
 class WebhooksController < ApplicationController
+  skip_before_filter :verify_authenticity_token
+
   def create
     webhook_notification = Braintree::WebhookNotification.parse(
       request.params["bt_signature"],
