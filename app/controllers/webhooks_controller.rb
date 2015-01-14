@@ -9,8 +9,6 @@ class WebhooksController < ApplicationController
   end
 
   def verify
-    challenge = request.params["bt_challenge"]
-    challenge_response = Braintree::WebhookNotification.verify(challenge)
-    return [200, challenge_response]
+    render :text => Braintree::WebhookNotification.verify(params[:bt_challenge])
   end
 end
