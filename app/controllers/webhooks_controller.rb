@@ -7,7 +7,7 @@ class WebhooksController < ApplicationController
       request.params["bt_payload"]
     )
     puts "[Webhook Received #{webhook_notification.timestamp}] Kind: #{webhook_notification.kind} | Subscription: #{webhook_notification.subscription.id}"
-    return 200
+    render :nothing => true
   end
 
   def verify
