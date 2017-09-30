@@ -8,7 +8,7 @@ class SnakeScoresController < ApplicationController
   end
   
   def index
-    snake_scores = SnakeScore.all
+    snake_scores = SnakeScore.order(score: :desc).limit(10)
     render :json => snake_scores
   end
 end
